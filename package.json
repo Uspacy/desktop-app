@@ -72,7 +72,7 @@
     "afterSign": "electron-builder-notarize",
 		"mac": {
 			"hardenedRuntime": true
-		}
+		},
 		"extraMetadata": {
 			"name": "Uspacy messenger"
 		},
