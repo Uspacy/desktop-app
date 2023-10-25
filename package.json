@@ -7,7 +7,7 @@
 		"name": "stas.raranetskyi"
 	},
 	"repository": {
-		"url": "git@github.com:Uspacy/desktop-app.git"
+		"url": "git@github.com:Uspacy/desktop-app-1.git"
 	},
 	"main": "main.js",
 	"scripts": {
