@@ -38,5 +38,5 @@ jobs:
           release: ${{ startsWith(github.ref, 'refs/tags/v') }}
         env:
           API_KEY_ID: ${{ secrets.API_KEY_ID }}
-          API_KEY_ISSUER_ID: ${{ secrets.API_KEY_ISSUER_ID }
+          API_KEY_ISSUER_ID: ${{ secrets.API_KEY_ISSUER_ID }}
         
