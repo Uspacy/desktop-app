@@ -26,6 +26,7 @@ jobs:
         run: |
            mkdir -p ~/private_keys/
            echo '${{ secrets.API_KEY }}' > ~/private_keys/AuthKey_${{ secrets.API_KEY_ID }}.p8
+      - run: yarn add --dev electron-builder-notarize
       - name: Build/release Electron app
         uses: samuelmeuli/action-electron-builder@v1
         with:
