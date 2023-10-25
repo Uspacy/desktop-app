@@ -65,13 +65,15 @@
 		"wait-on": "^7.0.1",
 		"webpack": "^5.88.2",
 		"webpack-cli": "^5.1.4"
+    "electron-builder-notarize": "1.5.1"
 	},
 	"build": {
 		"appId": "com.uspacy.app",
 		"productName": "Uspacy",
     "afterSign": "electron-builder-notarize",
 		"mac": {
-			"hardenedRuntime": true
+			"hardenedRuntime": true,
+      "entitlements": "./node_modules/electron-builder-notarize/entitlements.mac.inherit.plist",
 		},
 		"extraMetadata": {
 			"name": "Uspacy messenger"
