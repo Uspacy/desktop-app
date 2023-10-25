@@ -1,0 +1,4 @@
+{
+	"*.{ts,tsx,js}": "npm run eslint",
+	"*.test.{ts,tsx}": "npm run test:ci"
+}
