@@ -69,6 +69,10 @@
 	"build": {
 		"appId": "com.uspacy.app",
 		"productName": "Uspacy",
+    "afterSign": "electron-builder-notarize",
+		"mac": {
+			"hardenedRuntime": true
+		}
 		"extraMetadata": {
 			"name": "Uspacy messenger"
 		},
