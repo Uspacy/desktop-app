@@ -45,4 +45,4 @@ jobs:
           API_KEY_ISSUER_ID: ${{ secrets.API_KEY_ISSUER_ID }}
       - name: logs
         run: cat notarization-error.log
-        if: job.steps.build.status == failure()
+        if: steps.build.outcome != 'success'
