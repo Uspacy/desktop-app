@@ -73,6 +73,10 @@
 		"appId": "com.uspacy.app",
 		"productName": "Uspacy",
 		"afterSign": "electron-builder-notarize",
+    "publish": {
+      "provider": "github",
+      "releaseType": "release"
+    },
 		"mac": {
 			"hardenedRuntime": true,
 			"entitlements": "./entitlements.mac.plist",
