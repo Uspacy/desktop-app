@@ -73,7 +73,10 @@
     "afterSign": "electron-builder-notarize",
 		"mac": {
 			"hardenedRuntime": true,
-      "entitlements": "./entitlements.mac.plist"
+      "entitlements": "./entitlements.mac.plist",
+      "entitlementsInherit": "./entitlements.mac.plist",
+      "gatekeeperAssess": false,
+      "asarUnpack": "**/*.node"
 		},
 		"extraMetadata": {
 			"name": "Uspacy messenger"
