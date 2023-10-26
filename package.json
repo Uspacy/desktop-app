@@ -71,6 +71,9 @@
 		"webpack-cli": "^5.1.4"
 	},
 	"build": {
+    "files": [
+      "./dist/**/*"
+    ],
 		"appId": "com.uspacy.app",
 		"productName": "Uspacy",
 		"afterSign": "electron-builder-notarize",
