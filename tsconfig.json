@@ -1,18 +1,17 @@
 {
   "compilerOptions": {
     "target": "ESNext",
-    "module": "ESNext",
-    "moduleResolution": "Node",
+    "module": "commonjs",
+    "allowJs": true,
+    "skipLibCheck": true,
     "esModuleInterop": true,
+    "noImplicitAny": true,
+    "sourceMap": true,
+    "baseUrl": ".",
+    "outDir": "dist",
+    "moduleResolution": "node",
     "resolveJsonModule": true,
-    "lib": ["DOM", "ESNext"],
     "jsx": "react-jsx",
-    "strict": true
   },
-  "include": ["src"],
-  "ts-node": {
-    "compilerOptions": {
-      "module": "CommonJS"
-    }
-  }
+  "include": ["src"]
 }

@@ -35,7 +35,8 @@ export const getUrlByScope = (scope: Scope) => {
 	return `https://auth.uspacy.com/${scope === 'container' ? '' : scope}`;
 };
 
-export const importRemote = <T extends object>(scope: Scope, module: string, defaultComponent = () => null) => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const importRemote = <T extends object>(scope: Scope, module: string, defaultComponent = (): any => null) => {
 	const url = getUrlByScope(scope);
 	return importRemoteMF<{ default: ComponentType<T> }>({ url, scope, module }).catch(() => {
 		return { default: defaultComponent };

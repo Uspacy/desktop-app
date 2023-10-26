@@ -47,7 +47,15 @@ const main: Configuration = {
 	},
 };
 
-const renderer: Configuration = {
+const preload: Configuration = {
+	...common,
+	target: 'electron-preload',
+	entry: {
+		preload: './src/preload.ts',
+	},
+};
+
+export const renderer: Configuration = {
 	...common,
 	target: 'web',
 	entry: {
@@ -77,4 +85,4 @@ const renderer: Configuration = {
 	],
 };
 
-export default [main, renderer];
+export default [main, preload];

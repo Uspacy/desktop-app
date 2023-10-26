@@ -1,4 +1,4 @@
-window.addEventListener('showNotification', (e) => {
+window.addEventListener('showNotification', (e: CustomEvent) => {
 	const { title, body, icon, chatId } = e.detail;
 	const notification = sendNotification(title, { body, icon, silent: false });
 	notification.addEventListener('click', () => {
@@ -7,7 +7,7 @@ window.addEventListener('showNotification', (e) => {
 	});
 });
 
-const sendNotification = (title, body) => {
+const sendNotification = (title: string, body: NotificationOptions) => {
 	if (!('Notification' in window)) {
 		return;
 	}
@@ -16,10 +16,12 @@ const sendNotification = (title, body) => {
 	}
 
 	if (Notification.permission !== 'denied') {
-		Notification.requestPermission((permission) => {
+		Notification.requestPermission().then((permission) => {
 			if (permission === 'granted') {
 				return new Notification(title, body);
 			}
 		});
 	}
 };
+
+Notification.requestPermission();

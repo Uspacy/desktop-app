@@ -7,14 +7,14 @@ const createWindow = () => {
 	const mainWindow = new BrowserWindow({
 		icon: './assets/logo.svg',
 		webPreferences: {
+			preload: `${__dirname}/preload.js`,
 			devTools: isDev,
 		},
 	});
 
 	mainWindow.maximize();
 
-	// mainWindow.loadFile("dist/index.html");
-	if (isDev) mainWindow.loadURL('https://stage1.staging.uspacy.tech/', { userAgent });
+	if (isDev) mainWindow.loadURL('https://stage1.staging.uspacy.tech', { userAgent });
 	else mainWindow.loadURL('https://auth.uspacy.com', { userAgent });
 };
 
