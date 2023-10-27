@@ -1,18 +1,16 @@
 import { app } from 'electron';
 
-export const getAppLocale = () => {
+export const getClusterByLocale = () => {
 	const [locale] = app.getLocale().split('-');
 	switch (locale) {
 		case 'uk':
 		case 'ru':
-			return 'uk';
-		case 'en':
-			return 'en-US';
+			return 'ua';
 		case 'pl':
 			return 'pl';
 		case 'pt':
-			return 'pt-BR';
+			return 'com.br';
 		default:
-			return 'en-US';
+			return 'com';
 	}
 };
