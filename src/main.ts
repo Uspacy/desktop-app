@@ -1,25 +1,20 @@
-import { app, BrowserWindow } from 'electron';
+import { app } from 'electron';
 import isDev from 'electron-is-dev';
 
-const userAgent = 'DesktopApp';
+import { getAppLocale } from './utils/locale';
+import { setApplicationMenu } from './utils/menu';
+import { createWindow } from './utils/window';
 
-const createWindow = () => {
-	const mainWindow = new BrowserWindow({
-		icon: './assets/logo.svg',
-		webPreferences: {
-			preload: `${__dirname}/preload.js`,
-			devTools: isDev,
-		},
-	});
+const start = () => {
+	const mainWindow = createWindow();
+	setApplicationMenu(mainWindow);
 
-	mainWindow.maximize();
-
-	if (isDev) mainWindow.loadURL('https://stage1.staging.uspacy.tech', { userAgent });
-	else mainWindow.loadURL('https://auth.uspacy.com', { userAgent });
+	if (isDev) mainWindow.loadURL('https://stage1.staging.uspacy.tech');
+	else mainWindow.loadURL(`https://auth.uspacy.com?lng=${getAppLocale()}`);
 };
 
 app.whenReady().then(() => {
-	createWindow();
+	start();
 });
 
 app.once('window-all-closed', () => app.quit());

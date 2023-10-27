@@ -4,7 +4,7 @@
 	"version": "1.0.0",
 	"license": "MIT",
 	"author": {
-		"name": "stas.raranetskyi"
+		"name": "Uspacy"
 	},
 	"repository": {
 		"url": "git@github.com:Uspacy/desktop-app.git"
@@ -16,12 +16,12 @@
 		"build:webpack": "rimraf dist && cross-env NODE_ENV=\"production\" webpack --progress",
 		"dev:webpack": "cross-env NODE_ENV=\"development\" webpack",
 		"dev:electron": "wait-on dist/main.js dist/preload.js && electronmon dist/main.js",
-		"build:electron": "electron-builder",
+		"build:electron": "yarn build:webpack && electron-builder",
 		"build:electron:mac": "yarn build:electron -m",
 		"build:electron:win": "yarn build:electron -w",
 		"eslint": "eslint --max-warnings=0",
 		"eslint:fix": "npm run eslint -- --fix",
-    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\""
+		"format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\""
 	},
 	"electronmon": {
 		"patterns": [
@@ -71,16 +71,16 @@
 		"webpack-cli": "^5.1.4"
 	},
 	"build": {
-    "files": [
-      "./dist/**/*"
-    ],
+		"files": [
+			"./dist/**/*"
+		],
 		"appId": "com.uspacy.app",
 		"productName": "Uspacy",
 		"afterSign": "electron-builder-notarize",
-    "publish": {
-      "provider": "github",
-      "releaseType": "release"
-    },
+		"publish": {
+			"provider": "github",
+			"releaseType": "release"
+		},
 		"mac": {
 			"hardenedRuntime": true,
 			"entitlements": "./entitlements.mac.plist",
