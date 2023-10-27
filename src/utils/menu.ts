@@ -6,6 +6,17 @@ import { detectAuthPage } from './window';
 export const getTemplateMenu = (mainWindow: BrowserWindow) => {
 	const isMac = process.platform === 'darwin';
 	const isAuthPage = detectAuthPage(mainWindow);
+	const logoutItems = [
+		{
+			label: 'Logout',
+			id: 'logout-item',
+			visible: !isAuthPage,
+			click: () => {
+				mainWindow.webContents.loadURL('https://auth.uspacy.com?logout');
+			},
+		},
+		{ type: 'separator', id: 'logout-separator', visible: !isAuthPage },
+	];
 
 	const template: unknown[] = [
 		...(isMac
@@ -19,20 +30,12 @@ export const getTemplateMenu = (mainWindow: BrowserWindow) => {
 							{ role: 'hideOthers' },
 							{ role: 'unhide' },
 							{ type: 'separator' },
-							{
-								label: 'Logout',
-								id: 'logout-item',
-								visible: !isAuthPage,
-								click: () => {
-									mainWindow.webContents.loadURL('https://auth.uspacy.com?logout');
-								},
-							},
-							{ type: 'separator', id: 'logout-separator', visible: !isAuthPage },
+							...logoutItems,
 							{ role: 'quit' },
 						],
 					},
 			  ]
-			: []),
+			: [...logoutItems]),
 		{
 			label: 'Edit',
 			submenu: [
