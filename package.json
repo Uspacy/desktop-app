@@ -84,16 +84,9 @@
 		"mac": {
 			"hardenedRuntime": true,
 			"entitlements": "./entitlements.mac.plist",
-			"entitlementsInherit": "./entitlements.mac.plist",
+			"entitlementsInherit": "./Upwork.entitlements",
 			"gatekeeperAssess": false,
-			"asarUnpack": "**/*.node",
-      "target": {
-         "target": "default",
-          "arch": [
-            "x64",
-            "arm64"
-        ]
-  }
+			"asarUnpack": "**/*.node"
     },
 		"extraMetadata": {
 			"name": "Uspacy"
