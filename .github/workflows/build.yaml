@@ -31,7 +31,7 @@ jobs:
       - run: yarn add --dev electron-builder-notarize
       - name: Build/release Electron app X64
         if: startsWith(matrix.os, 'macos')
-        id: build
+        id: build-x64
         uses: samuelmeuli/action-electron-builder@v1
         with:
           # GitHub token, automatically provided to the action
@@ -49,7 +49,7 @@ jobs:
           API_KEY_ISSUER_ID: ${{ secrets.API_KEY_ISSUER_ID }}
       - name: Build/release Electron app ARM64
         if: startsWith(matrix.os, 'macos')
-        id: build
+        id: build-arm64
         uses: samuelmeuli/action-electron-builder@v1
         with:
           # GitHub token, automatically provided to the action
@@ -67,7 +67,7 @@ jobs:
           API_KEY_ISSUER_ID: ${{ secrets.API_KEY_ISSUER_ID }}
       - name: Build/release Electron app Windows
         if: startsWith(matrix.os, 'windows')
-        id: build
+        id: build-windows
         uses: samuelmeuli/action-electron-builder@v1
         with:
           # GitHub token, automatically provided to the action
