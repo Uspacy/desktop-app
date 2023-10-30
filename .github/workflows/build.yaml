@@ -57,7 +57,6 @@ jobs:
         with:
           node-version: 18
       - name: Prepare for app notarization
-        if: startsWith(matrix.os, 'macos')
         # Import Apple API key for app notarization on macOS
         run: |
           mkdir -p ~/private_keys/
