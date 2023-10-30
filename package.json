@@ -84,7 +84,7 @@
 		"mac": {
 			"hardenedRuntime": true,
 			"entitlements": "./entitlements.mac.plist",
-			"entitlementsInherit": "./Upwork.entitlements",
+			"entitlementsInherit": "./entitlements.mac.plist",
 			"gatekeeperAssess": false,
 			"asarUnpack": "**/*.node"
     },
