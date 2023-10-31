@@ -86,14 +86,7 @@
 			"entitlements": "./entitlements.mac.plist",
 			"entitlementsInherit": "./entitlements.mac.plist",
 			"gatekeeperAssess": false,
-			"asarUnpack": "**/*.node",
-      "target": {
-         "target": "default",
-          "arch": [
-            "x64",
-            "arm64"
-        ]
-  }
+			"asarUnpack": "**/*.node"
     },
 		"extraMetadata": {
 			"name": "Uspacy"
