@@ -46,7 +46,7 @@ jobs:
           API_KEY_ISSUER_ID: ${{ secrets.API_KEY_ISSUER_ID }}
       - name: logs
         run: cat notarization-error.log
-        if: steps.build.build != 'success'
+        if: always()
 
   release-mac-arm64:
     runs-on: macos-latest
