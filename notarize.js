@@ -1,18 +1,11 @@
 require('dotenv').config();
-const { notarize } = require('electron-notarize');
+import { notarize } from '@electron/notarize';
 
-exports.default = async function notarizing(context) {
-  const { electronPlatformName, appOutDir } = context;  
-  if (electronPlatformName !== 'darwin') {
-    return;
+async function packageTask () {
+  // Package your app here, and code sign with hardened runtime
+  await notarize({
+	  appBundleId: 'com.uspacy.app',
+	  appPath: `${appOutDir}/${appName}.app`,
+	  appleApiKey: process.env.API_KEY_ID,
+	  appleApiIssuer: process.env.API_KEY_ISSUER_ID,
   }
-
-  const appName = context.packager.appInfo.productFilename;
-
-  return await notarize({
-    appBundleId: 'com.uspacy.app',
-    appPath: `${appOutDir}/${appName}.app`,
-    appleApiKey: process.env.API_KEY_ID,
-    appleApiIssuer: process.env.API_KEY_ISSUER_ID,
-  });
-};
