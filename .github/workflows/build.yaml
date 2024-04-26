@@ -28,8 +28,6 @@ jobs:
         run: |
           mkdir -p ~/private_keys/
           echo '${{ secrets.API_KEY }}' > ~/private_keys/AuthKey_${{ secrets.API_KEY_ID }}.p8
-      - run: xcode-select --print-path
-      - run: xcrun notarytool
       - name: Build/release Electron
         id: build
         uses: johannesjo/action-electron-builder@v1
