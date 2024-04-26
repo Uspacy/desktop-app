@@ -45,9 +45,6 @@ jobs:
           API_KEY_ID: ${{ secrets.API_KEY_ID }}
           API_KEY_ISSUER_ID: ${{ secrets.API_KEY_ISSUER_ID }}
           appleApiKey: ~/private_keys/AuthKey_${{ secrets.API_KEY_ID }}.p8
-      - name: logs
-        run: cat notarization-error.log
-        if: always()
 
   release-mac-arm64:
     runs-on: macos-latest
