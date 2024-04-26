@@ -90,7 +90,7 @@
 			"gatekeeperAssess": false,
 			"asarUnpack": "**/*.node",
       "notarize": {
-        teamId: process.env.TEAM_ID,
+        "tool": "notarytool",
       }
 		},
 		"extraMetadata": {
