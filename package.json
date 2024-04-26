@@ -89,6 +89,7 @@
 			"entitlementsInherit": "./entitlements.mac.plist",
 			"gatekeeperAssess": false,
 			"asarUnpack": "**/*.node"
+      "notarize": true
 		},
 		"extraMetadata": {
 			"name": "Uspacy"
