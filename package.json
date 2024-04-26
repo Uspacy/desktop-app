@@ -48,7 +48,6 @@
 		"css-loader": "^6.8.1",
 		"electron": "^26.2.3",
 		"electron-builder": "^24.9.1",
-		"electron-builder-notarize": "1.5.1",
 		"electronmon": "^2.0.2",
 		"eslint": "^8.50.0",
 		"eslint-config-google": "^0.14.0",
