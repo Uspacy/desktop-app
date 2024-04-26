@@ -90,7 +90,7 @@
 			"gatekeeperAssess": false,
 			"asarUnpack": "**/*.node",
       "notarize": {
-        "tool": "notarytool"
+        "tool":  "notarytool'
       }
 		},
 		"extraMetadata": {
