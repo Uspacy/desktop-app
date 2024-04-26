@@ -12,7 +12,8 @@ exports.default = async function notarizing(context) {
   return await notarize({
     appBundleId: 'com.uspacy.app',
     appPath: `${appOutDir}/${appName}.app`,
-    appleApiKey: process.env.API_KEY_ID,
+    appleApiKeyId: process.env.API_KEY_ID,
     appleApiIssuer: process.env.API_KEY_ISSUER_ID,
+	appleApiKey: process.env.appleApiKey,
   });
 };
