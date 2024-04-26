@@ -89,9 +89,6 @@
 			"entitlementsInherit": "./entitlements.mac.plist",
 			"gatekeeperAssess": false,
 			"asarUnpack": "**/*.node",
-      "notarize": {
-        "teamId": "process.env.APPLE_TEAM_ID"
-      }
 		},
 		"extraMetadata": {
 			"name": "Uspacy"
