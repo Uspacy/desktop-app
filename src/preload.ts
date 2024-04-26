@@ -11,9 +11,7 @@ window.addEventListener('showNotification', (e: CustomEvent) => {
 
 window.addEventListener('setBadgeCount', (e: CustomEvent) => {
 	const { count = 0 } = e.detail;
-	ipcRenderer.send('setBadgeCount', {
-		count,
-	});
+	ipcRenderer.send('update-badge', count);
 });
 
 const sendNotification = (title: string, body: NotificationOptions) => {

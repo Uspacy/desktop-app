@@ -7,7 +7,7 @@ import { createWindow } from './utils/window';
 
 const start = () => {
 	const mainWindow = createWindow();
-	initBadgeListener();
+	initBadgeListener(mainWindow);
 	setApplicationMenu(mainWindow);
 	const url = getStartUrl();
 	mainWindow.loadURL(url);
