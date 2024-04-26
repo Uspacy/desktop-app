@@ -88,7 +88,7 @@
 			"entitlements": "./entitlements.mac.plist",
 			"entitlementsInherit": "./entitlements.mac.plist",
 			"gatekeeperAssess": false,
-			"asarUnpack": "**/*.node"
+			"asarUnpack": "**/*.node",
       "notarize": true
 		},
 		"extraMetadata": {
