@@ -90,7 +90,7 @@
 			"gatekeeperAssess": false,
 			"asarUnpack": "**/*.node",
       "notarize": {
-        "tool": "notarytool",
+        "teamId": "process.env.APPLE_TEAM_ID"
       }
 		},
 		"extraMetadata": {
