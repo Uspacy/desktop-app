@@ -4,7 +4,8 @@
 	"version": "1.0.1",
 	"license": "MIT",
 	"author": {
-		"name": "Uspacy"
+		"name": "Uspacy",
+    "email": "info@uspacy.com"
 	},
 	"repository": {
 		"url": "git@github.com:Uspacy/desktop-app.git"
