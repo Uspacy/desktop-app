@@ -91,7 +91,7 @@
 			"asarUnpack": "**/*.node"
 		},
     "linux": {
-      "target": ["AppImage", "dev"]
+      "target": ["AppImage", "deb", "rpm"]
     },
 		"extraMetadata": {
 			"name": "Uspacy"
