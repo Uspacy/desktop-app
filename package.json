@@ -90,6 +90,9 @@
 			"gatekeeperAssess": false,
 			"asarUnpack": "**/*.node"
 		},
+    "linux": {
+      "target": ["AppImage", "dev"]
+    },
 		"extraMetadata": {
 			"name": "Uspacy"
 		},
