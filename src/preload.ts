@@ -1,10 +1,10 @@
 import { ipcRenderer } from 'electron';
 
 window.addEventListener('showNotification', (e: CustomEvent) => {
-	const { title, body, icon, chatId } = e.detail;
+	const { title, body, icon } = e.detail;
 	const notification = sendNotification(title, { body, icon, silent: false });
 	notification.addEventListener('click', () => {
-		const event = new CustomEvent('desktopNotificationClick', { detail: { chatId } });
+		const event = new CustomEvent('desktopNotificationClick', { detail: e.detail.data });
 		window.dispatchEvent(event);
 	});
 });
