@@ -5,7 +5,7 @@ import { getStartUrl } from './utils/cluster';
 import { setApplicationMenu } from './utils/menu';
 import { createWindow } from './utils/window';
 
-let canClose = false;
+let canClose = process.platform !== 'darwin';
 let mainWindow: BrowserWindow;
 const start = () => {
 	mainWindow = createWindow();
