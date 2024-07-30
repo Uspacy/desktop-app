@@ -5,6 +5,7 @@ window.addEventListener('showNotification', (e: CustomEvent) => {
 	const notification = sendNotification(title, { body, icon, silent: false });
 	notification.addEventListener('click', () => {
 		const event = new CustomEvent('desktopNotificationClick', { detail: { chatId } });
+		ipcRenderer.send('respore-window');
 		window.dispatchEvent(event);
 	});
 });
