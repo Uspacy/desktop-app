@@ -5,6 +5,7 @@ window.addEventListener('showNotification', (e: CustomEvent) => {
 	const notification = sendNotification(title, { body, icon, silent: false });
 	notification.addEventListener('click', () => {
 		const event = new CustomEvent('desktopNotificationClick', { detail: e.detail.data });
+		ipcRenderer.send('respore-window');
 		window.dispatchEvent(event);
 	});
 });
