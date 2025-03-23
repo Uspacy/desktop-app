@@ -39,6 +39,9 @@
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0"
 	},
+        "resolutions": {
+                "@electron/notarize": "2.3.2"
+        },
 	"devDependencies": {
 		"@types/node": "^20.7.1",
 		"@types/react": "^18.2.23",
@@ -49,7 +52,7 @@
 		"css-loader": "^6.8.1",
 		"electron": "^26.2.4",
 		"electron-builder": "^24.9.1",
-    "@electron/notarize": "2.3.0",
+    "@electron/notarize": "2.3.2",
 		"electronmon": "^2.0.2",
 		"eslint": "^8.50.0",
 		"eslint-config-google": "^0.14.0",
@@ -90,7 +93,7 @@
 			"entitlementsInherit": "./entitlements.mac.plist",
 			"gatekeeperAssess": false,
 			"asarUnpack": "**/*.node",
-      "target": ["dmg", "pkg"]
+                        "target": ["dmg", "pkg"]
 		},
     "linux": {
       "target": ["AppImage", "deb", "rpm"]
