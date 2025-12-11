@@ -1,6 +1,7 @@
 import { importRemote as importRemoteMF } from 'module-federation-import-remote';
 import { ComponentType, PropsWithChildren } from 'react';
 export type Scope =
+	| 'container'
 	| 'auth'
 	| 'chat'
 	| 'profile'
@@ -18,6 +19,8 @@ export type Scope =
 
 export const getPortByScope = (scope: Scope) => {
 	switch (scope) {
+		case 'container':
+			return 3000;
 		case 'auth':
 			return 3001;
 		case 'chat':
