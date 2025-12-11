@@ -1,6 +1,21 @@
 import { importRemote as importRemoteMF } from 'module-federation-import-remote';
-import { ComponentType } from 'react';
-export type Scope = 'container' | 'auth' | 'chat' | 'profile' | 'newsfeed' | 'migration' | 'company' | 'tasks' | 'crm' | 'marketplace';
+import { ComponentType, PropsWithChildren } from 'react';
+export type Scope =
+	| 'container'
+	| 'auth'
+	| 'chat'
+	| 'profile'
+	| 'newsfeed'
+	| 'migration'
+	| 'company'
+	| 'tasks'
+	| 'crm'
+	| 'marketplace'
+	| 'automations'
+	| 'analytics'
+	| 'trash'
+	| 'marketing'
+	| 'home';
 
 export const getPortByScope = (scope: Scope) => {
 	switch (scope) {
@@ -24,6 +39,16 @@ export const getPortByScope = (scope: Scope) => {
 			return 3008;
 		case 'marketplace':
 			return 3009;
+		case 'automations':
+			return 3010;
+		case 'analytics':
+			return 3011;
+		case 'marketing':
+			return 3013;
+		case 'trash':
+			return 3014;
+		case 'home':
+			return 3015;
 	}
 };
 
@@ -35,10 +60,12 @@ export const getUrlByScope = (scope: Scope) => {
 	return `https://auth.uspacy.com/${scope === 'container' ? '' : scope}`;
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const importRemote = <T extends object>(scope: Scope, module: string, defaultComponent = (): any => null) => {
+type DefaultComponent<P = unknown> = (props: PropsWithChildren<P>) => JSX.Element;
+export const importRemote = <P extends object>(scope: Scope, module: string, defaultComponent: DefaultComponent<P> = () => null) => {
 	const url = getUrlByScope(scope);
-	return importRemoteMF<{ default: ComponentType<T> }>({ url, scope, module }).catch(() => {
+	return importRemoteMF<{ default: ComponentType<P> }>({ url, scope, module }).catch((error) => {
+		// eslint-disable-next-line no-console
+		console.error(`[importRemote] Failed to load module "${module}" from scope "${scope}" (${url})`, error);
 		return { default: defaultComponent };
 	});
 };
