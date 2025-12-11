@@ -54,7 +54,7 @@ export const getUrlByScope = (scope: Scope) => {
 	if (process.env.NODE_ENV === 'development' && port) {
 		return `http://localhost:${port}`;
 	}
-	return `${window.location.origin}/${scope}`;
+	return `https://auth.uspacy.com/${scope === 'container' ? '' : scope}`;
 };
 
 type DefaultComponent<P = unknown> = (props: PropsWithChildren<P>) => JSX.Element;
