@@ -9,7 +9,11 @@ let canClose = process.platform !== 'darwin';
 let mainWindow: BrowserWindow;
 
 const initNotificationListener = () => {
-	ipcMain.on('show-notification', (event, { title, body, icon, data }) => {
+	ipcMain.on('show-notification', (event, payload: { title: string; body: string; icon?: string; data?: unknown }) => {
+		if (!payload || typeof payload.title !== 'string' || typeof payload.body !== 'string') {
+			return;
+		}
+		const { title, body, icon, data } = payload;
 		const notification = new Notification({
 			title,
 			body,
