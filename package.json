@@ -54,7 +54,7 @@
     "electron-builder": "^24.9.1",
     "@electron/notarize": "2.3.2",
     "electronmon": "^2.0.2",
-    "eslint": "^8.50.0",
+    "eslint": "^9.26.0",
     "eslint-config-google": "^0.14.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-import-resolver-typescript": "^3.6.1",
