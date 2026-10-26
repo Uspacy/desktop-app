@@ -9,7 +9,7 @@ let canClose = process.platform !== 'darwin';
 let mainWindow: BrowserWindow;
 
 const focusMainWindow = () => {
-	if (!mainWindow) return;
+	if (!mainWindow || mainWindow.isDestroyed()) return;
 	if (mainWindow.isMinimized()) mainWindow.restore();
 	mainWindow.show();
 	mainWindow.focus();
