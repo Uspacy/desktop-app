@@ -8,6 +8,13 @@ import { createWindow } from './utils/window';
 let canClose = process.platform !== 'darwin';
 let mainWindow: BrowserWindow;
 
+const focusMainWindow = () => {
+	if (!mainWindow || mainWindow.isDestroyed()) return;
+	if (mainWindow.isMinimized()) mainWindow.restore();
+	mainWindow.show();
+	mainWindow.focus();
+};
+
 const initNotificationListener = () => {
 	ipcMain.on('show-notification', (event, payload: { title: string; body: string; icon?: string; data?: unknown }) => {
 		if (!payload || typeof payload.title !== 'string' || typeof payload.body !== 'string') {
@@ -22,11 +29,7 @@ const initNotificationListener = () => {
 		});
 
 		notification.on('click', () => {
-			if (mainWindow) {
-				if (mainWindow.isMinimized()) mainWindow.restore();
-				mainWindow.show();
-				mainWindow.focus();
-			}
+			focusMainWindow();
 			event.sender.send('notification-clicked', data);
 		});
 
@@ -55,15 +58,24 @@ const start = () => {
 	});
 };
 
-app.whenReady().then(() => {
-	start();
-	app.on('activate', () => {
-		if (mainWindow?.isMinimized()) mainWindow.restore();
+// A second instance sharing the same profile can't access storage locked by the first one and renders a blank window
+if (!app.requestSingleInstanceLock()) {
+	app.quit();
+} else {
+	app.on('second-instance', focusMainWindow);
+	app.whenReady().then(() => {
+		start();
+		app.on('activate', () => {
+			if (mainWindow?.isMinimized()) mainWindow.restore();
+		});
 	});
-});
+}
 
 app.on('before-quit', () => {
 	canClose = true;
 	app.quit();
 });
-app.once('window-all-closed', () => {});
+app.on('window-all-closed', () => {
+	// On macOS closing the window only minimizes it, so the app keeps running
+	if (process.platform !== 'darwin') app.quit();
+});
