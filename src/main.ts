@@ -3,6 +3,7 @@ import { app, BrowserWindow, ipcMain, Notification } from 'electron';
 import { initBadgeListener } from './utils/badge';
 import { getStartUrl } from './utils/cluster';
 import { setApplicationMenu } from './utils/menu';
+import { clearNotifications, trackNotification } from './utils/notifications';
 import { createWindow } from './utils/window';
 
 let canClose = process.platform !== 'darwin';
@@ -33,8 +34,11 @@ const initNotificationListener = () => {
 			event.sender.send('notification-clicked', data);
 		});
 
+		trackNotification(notification);
 		notification.show();
 	});
+	// The web app signed out
+	ipcMain.on('clear-notifications', clearNotifications);
 };
 
 const start = () => {
