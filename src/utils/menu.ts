@@ -1,6 +1,8 @@
 import { app, BrowserWindow, Menu } from 'electron';
 import isDev from 'electron-is-dev';
 
+import { getStartUrl } from './cluster';
+import { clearNotifications } from './notifications';
 import { detectAuthPage } from './window';
 
 export const getTemplateMenu = (mainWindow: BrowserWindow) => {
@@ -12,7 +14,9 @@ export const getTemplateMenu = (mainWindow: BrowserWindow) => {
 			id: 'logout-item',
 			visible: !isAuthPage,
 			click: () => {
-				mainWindow.webContents.loadURL('https://auth.uspacy.com?logout');
+				clearNotifications();
+				// The auth host of the app's cluster, where the app signed in: it sends the logout on to the portal
+				mainWindow.webContents.loadURL(`${getStartUrl()}?logout`);
 			},
 		},
 		{ type: 'separator', id: 'logout-separator', visible: !isAuthPage },

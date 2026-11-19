@@ -11,6 +11,11 @@ ipcRenderer.on('notification-clicked', (_, data: unknown) => {
 	window.dispatchEvent(event);
 });
 
+// The web app signed out: close its notifications and clear the badge
+window.addEventListener('clearNotifications', () => {
+	ipcRenderer.send('clear-notifications');
+});
+
 // Badge count
 window.addEventListener('setBadgeCount', (e: CustomEvent) => {
 	const { count = 0 } = e.detail;
